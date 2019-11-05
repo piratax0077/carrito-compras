@@ -10,6 +10,19 @@ class categoriaController {
 
         require_once 'views/categorias/index.php';
     }
+    
+    public function ver(){
+        Utils::isAdmin();
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $categoria = new Categoria();
+            $categoria->setId($id);
+            $categoria = $categoria->getOne();
+            
+        }
+        
+        require_once 'views/categorias/ver.php';
+    }
 
     public function crear() {
         Utils::isAdmin();
@@ -45,5 +58,7 @@ class categoriaController {
         }
         header("Location:" . base_url . "categoria/index");
     }
+    
+    
 
 }
