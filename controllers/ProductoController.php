@@ -9,11 +9,28 @@ class productoController {
         //Renderizar la vista
 
         $producto = new Producto();
-        $productos = $producto->getRandom(6);
+        $productos = $producto->getRandom(3);
         
         
         
         require_once 'views/productos/destacados.php';
+    }
+    
+    public function ver(){
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            
+            //Conseguir categoria
+            
+            $producto = new Producto();
+            $producto->setId($id);
+            $producto = $producto->getOne();
+            
+            
+            
+        }
+        
+        require_once 'views/productos/ver.php';
     }
 
     public function gestion() {
